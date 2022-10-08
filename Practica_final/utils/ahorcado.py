@@ -12,48 +12,61 @@ class Ahorcado:
         '''  
              ***********
              *         *
-             0         *
+             O         *
                        *
                        *
             ************''',
         '''  
              ***********
              *         *
-             0         *
+             O         *
              |         *
                        *
             ************''',
         '''  
              ***********
              *         *
-             0         *
+             O         *
             /|         *
                        *
             ************''',
         '''  
              ***********
              *         *
-             0         *
+             O         *
             /|\        *
                        *
             ************''',
         '''  
              ***********
              *         *
-             0         *
+             O         *
             /|\        *
             /          *
             ************''',
         '''  
              ***********
              *         *
-             0         *
+             O         *
             /|\        *
             / \        *
             ************''']
 
     def obtieneDibujo(self, vidas):
+        """obtieneDibujo
+
+        Args:
+            vidas (int): el nuemero de intentos
+
+        Returns:
+            int: retornamos el numero de vidas que nos queda por cada intento.
+        """
         return self.dibujo[self.getTotalVidas() - vidas]
 
     def getTotalVidas(self):
-        return int(len(self.dibujo))
+        """getTotalVidas
+
+        Returns:
+            list: Retorna el ahorcado dependiendo de las vidas perdidas 
+        """
+        return int(len(self.dibujo)-1)

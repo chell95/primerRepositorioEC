@@ -9,21 +9,28 @@ def main():
     menuPrincial = Menu()
     dibujo = Ahorcado()
     palabraN = Palabra()
-    vidas = dibujo.getTotalVidas()
 
     bandera = True
     while True:
-        #os.system('cls')
-        opt = menuPrincial.opts("Juego del ahorcado", "Comenzar",
-                  "Visualizar marcador", "Salir", primera_vez=bandera)
+        vidas = dibujo.getTotalVidas()
+        opt = menuPrincial.opts("Juguemos al AHORCADO", "Comenzar",
+                  "Salir", primera_vez=bandera)
         if opt == 1:
             #os.system('cls')
             while palabraN.igualaListas() != True and vidas > 0:
                 print(dibujo.obtieneDibujo(vidas))
+                print(palabraN.mostraPalabraGuion())
                 opt = input("Ingresa la letra: ")
                 if palabraN.addLetra(opt) == False:
-                    vidas = vidas - 1                
-        elif opt == 3:
+                    vidas = vidas - 1
+            if vidas == 0:
+                print  ("PERDISTE La palabra a adivinar era:  ")
+                print("".join(palabraN.mostrarPalabra()))
+                print(dibujo.obtieneDibujo(vidas))  
+            else:
+                print("Has adivinado la palabra FELICIDADES!!!") 
+                print("".join(palabraN.mostrarPalabra()))          
+        elif opt == 2:
             break
         else:
             bandera = False
